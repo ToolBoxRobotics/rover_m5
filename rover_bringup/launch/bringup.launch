@@ -1,0 +1,11 @@
+<launch>
+  <param name="robot_description" command="$(find xacro)/xacro $(find rover_description)/urdf/rover_full.urdf.xacro" />
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+  <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui"/>
+  <node pkg="controller_manager" type="spawner" name="controller_spawner" args="joint_state_controller fl_wheel_velocity_controller ml_wheel_velocity_controller rl_wheel_velocity_controller fr_wheel_velocity_controller mr_wheel_velocity_controller rr_wheel_velocity_controller fl_steer_position_controller fr_steer_position_controller rl_steer_position_controller rr_steer_position_controller arm_trajectory_controller" />
+  <node pkg="rosserial_python" type="serial_node.py" name="rosserial_drivetrain" args="/dev/ttyACM0"/>
+  <node pkg="rosserial_python" type="serial_node.py" name="rosserial_arm" args="/dev/ttyACM1"/>
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_filter_node" output="screen"/>
+  <node pkg="rover_bringup" type="ackermann_adapter.py" name="ackermann_adapter" output="screen"/>
+  <node pkg="rover_bringup" type="encoder_to_odom.py" name="encoder_to_odom" output="screen"/>
+</launch>
