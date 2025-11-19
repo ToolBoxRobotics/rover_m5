@@ -1,0 +1,30 @@
+Visualization Manager:
+  Global Options:
+    Fixed Frame: base_link
+
+  Displays:
+    - Class: rviz/TF
+      Name: TF
+      Enabled: true
+    - Class: rviz/RobotModel
+      Name: RobotModel
+      Enabled: true
+      Robot Description: robot_description
+    - Class: rviz/JointState
+      Name: JointStates
+      Enabled: true
+      Topic: /joint_states
+    - Class: rviz/Image
+      Name: RGB Image
+      Enabled: true
+      Topic: /kinect/rgb/image_raw
+      Transport Hint: raw
+    - Class: rviz/Image
+      Name: Depth Image
+      Enabled: true
+      Topic: /kinect/depth/image_raw
+      Transport Hint: raw
+    - Class: rviz/PointCloud2
+      Name: Depth Points
+      Enabled: true
+      Topic: /kinect/depth/points
