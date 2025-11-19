@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot name="six_wheel_rover" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="wheel_radius" value="0.08"/>
+  <link name="base_link">
+    <inertial>
+      <mass value="25.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <!-- Front-left steering -->
+  <link name="fl_steer_link"/>
+  <joint name="fl_steer_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="fl_steer_link"/>
+    <origin xyz="0.35 0.25 0.0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Front-left wheel -->
+  <link name="fl_wheel_link"/>
+  <joint name="fl_wheel_joint" type="continuous">
+    <parent link="fl_steer_link"/>
+    <child link="fl_wheel_link"/>
+    <origin xyz="0 0 -0.08" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Arm base (front center) -->
+  <link name="arm_base_link"/>
+  <joint name="arm_base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_base_link"/>
+    <origin xyz="0.45 0 0.2"/>
+  </joint>
+
+  <!-- Add rest of wheels, steers and arm joints similarly -->
+</robot>
