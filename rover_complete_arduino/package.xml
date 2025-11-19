@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rover_complete_arduino</name>
+  <version>0.0.1</version>
+  <description>Arduino sketches and helpers for six-wheel rover</description>
+  <maintainer email="you@example.com">ToolBox Robotics</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rosserial_python</exec_depend>
+  <exec_depend>rosserial_client</exec_depend>
+</package>
